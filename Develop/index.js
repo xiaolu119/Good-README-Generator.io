@@ -23,7 +23,7 @@ async function main(){
         },
         {
             type: "input",
-            message: "What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.",
+            message: "What are the steps required to install your project? .",
             name: "installationProcess"
         },
         {
@@ -48,7 +48,7 @@ async function main(){
         },
         {
             type: "input",
-            message: "please enter git hub user names of the contributor if any (If there are mulitple contributor, seperate names with comma and no space! )",
+            message: "please enter git hub user names of the contributor ",
             name: "contributorsGitUserName"
         },
         {
@@ -79,15 +79,15 @@ async function main(){
         const contributorUserNamesArray = contributorUserNames.split(",");
         console.log(contributorUserNamesArray);
         var resultContributor;
-        for (i=0; i<contributorUserNamesArray.length; i++){
-            var contributorsGitUserName = contributorUserNamesArray[i]
-            const gitResponse2 = await axios.get(`https://api.github.com/users/${contributorsGitUserName}`);
-            var gitContribuProfileImage = gitResponse2.data.avatar_url;
-            var gitContribuUrl = gitResponse2.data.html_url;
-            var gitContribuEmail = gitResponse2.data.email;
-            var resultContributor = resultContributor + (`
-            \n <img src="${gitContribuProfileImage}" alt="drawing" width="150" display="inline"/> ${contributorsGitUserName}  GitHubLink: ${gitContribuUrl}`);
-        }
+        // for (i=0; i<contributorUserNamesArray.length; i++){
+        //     var contributorsGitUserName = contributorUserNamesArray[i]
+        //     const gitResponse2 = await axios.get(`https://api.github.com/users/${contributorsGitUserName}`);
+        //     var gitContribuProfileImage = gitResponse2.data.avatar_url;
+        //     var gitContribuUrl = gitResponse2.data.html_url;
+        //     var gitContribuEmail = gitResponse2.data.email;
+        //     var resultContributor = resultContributor + (`
+        //     \n <img src="${gitContribuProfileImage}" alt="drawing" width="150" display="inline"/> ${contributorsGitUserName}  GitHubLink: ${gitContribuUrl}`);
+        // }
         var result = (`
 # ${projectTittle} 
 ${projectDescription}
@@ -118,7 +118,7 @@ ${tests}
 \nLocation:${gitlocation}
 \nGitHub: ${gitUrl}
 `)
-var writeResult = fs.writeFileSync(path.join(__dirname, '../GoodReadMeGenerator', 'readMe.md'), result )
-console.log("file generated....")
+var writeResult = fs.writeFileSync("./README.md", result )
+console.log("file generated....",writeResult)
     }
 main();
