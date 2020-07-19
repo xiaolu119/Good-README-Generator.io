@@ -1,6 +1,6 @@
 
 # Good-README-Generator.io 
-using index js
+node index js app using
 
 * [Installation](#Installation)
 
@@ -15,7 +15,7 @@ using index js
 * [Tests](#Tests)
 
 ## Installation
-
+npm i
 ## Instructions
 git clone url
 ```
